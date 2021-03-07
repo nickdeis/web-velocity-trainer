@@ -1,6 +1,9 @@
 import React, { useState, useEffect } from "react";
 import "./App.css";
 
+
+declare const Plotly:any;
+
 type Event = {
   x: number;
   y: number;
@@ -13,7 +16,6 @@ function App() {
   //@ts-ignore
   useEffect(() => {
     async function initPlot() {
-        //@ts-ignore
         Plotly.newPlot(
           "plot",
           [
@@ -48,9 +50,7 @@ function App() {
         }
         const newEventLog = eventLog.concat([{x,y,z,timestamp}])
         updateEvents(newEventLog);
-        //@ts-ignore
         if(Plotly){
-          //@ts-ignore
           Plotly.extendTraces('plot',{x:[[x]],y:[[y]],z:[[z]]},[0]);
         }
         
